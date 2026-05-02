@@ -14,6 +14,39 @@ import FarmFreshBg from '../assets/logistics.png';
 import ConstructionBg from '../assets/ConstructionBg.jpg';
 import AlliedProductsBg from '../assets/AlliedProductsBg.jpg';
 import AnimalNutritionBg from '../assets/AnimalNutritionBg.jpg';
+import pnc from '../assets/pnc_infratech_ltd_logo.jpg';
+import godrej from '../assets/godrej.png';
+import lntecc from '../assets/lntcc_logo.png';
+import nhai from '../assets/nhai.jpg';
+
+// Client logos data - Update this object to change client logos and names
+// For real logos, replace the 'logo' URL with your actual image URLs
+const clientsData = [
+  {
+    id: 1,
+    name: 'Pnc Infrastructure Ltd',
+    logo: pnc,
+    alt: 'Pnc Infrastructure Ltd logo'
+  },
+  {
+    id: 2,
+    name: 'Godrej real estate group',
+    logo: godrej,
+    alt: 'Godrej real estate group logo'
+  },
+  {
+    id: 3,
+    name: 'L&T Construction',
+    logo: lntecc,
+    alt: 'L&T Construction logo'
+  },
+  {
+    id: 4,
+    name: 'NHAI',
+    logo: nhai,
+    alt: 'NHAI logo'
+  }
+];
 
 // Hero background image component
 function HeroBackground() {
@@ -282,6 +315,73 @@ export function Home() {
               index={2}
             />
           </div>
+        </div>
+      </section>
+
+      {/* Our Clients Section - Added with round logos and dynamic data */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-background">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <span className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-[#f97316]/10 to-[#fb923c]/10 text-[#f97316] font-semibold text-sm mb-4">
+              Trusted Partners
+            </span>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-[#0A2540] to-[#3b82f6] dark:from-[#3b82f6] dark:to-[#fb923c] bg-clip-text text-transparent">
+              Our Valued Clients
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Proudly serving industry leaders across the nation
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-8 md:gap-12">
+            {clientsData.map((client, index) => (
+              <motion.div
+                key={client.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="flex flex-col items-center group"
+              >
+                <div className="relative mb-4">
+                  <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden shadow-lg bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-1.5 transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xl">
+                    <img
+                      src={client.logo}
+                      alt={client.alt}
+                      className="w-full h-full rounded-full object-cover bg-white dark:bg-gray-800"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#f97316]/0 to-[#f97316]/0 group-hover:from-[#f97316]/10 group-hover:to-[#fb923c]/10 transition-all duration-300"></div>
+                </div>
+                <h3 className="text-base sm:text-lg font-semibold text-center text-gray-800 dark:text-gray-200 group-hover:text-[#f97316] transition-colors">
+                  {client.name}
+                </h3>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-center mt-12"
+          >
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 text-[#f97316] font-semibold hover:gap-3 transition-all"
+            >
+              Become a Partner
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </motion.div>
         </div>
       </section>
 
