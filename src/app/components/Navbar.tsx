@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import mainlogo from '../assets/mainlogo.png';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,12 +42,13 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#0A2540] to-[#3b82f6] rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
+            {/* <div className="w-12 h-12 bg-gradient-to-br from-[#0A2540] to-[#3b82f6] rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
               <span className="font-bold text-white text-xl">P</span>
             </div>
             <span className="text-2xl font-bold bg-gradient-to-r from-[#0A2540] to-[#3b82f6] dark:from-[#3b82f6] dark:to-[#fb923c] bg-clip-text text-transparent">
               PRA Group
-            </span>
+            </span> */}
+            <img src={mainlogo} alt="PRA Group Logo" className='h-20' w-40 />
           </Link>
 
           <div className="hidden lg:flex items-center space-x-1">

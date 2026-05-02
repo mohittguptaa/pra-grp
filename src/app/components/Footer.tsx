@@ -27,6 +27,7 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4 text-lg">Businesses</h3>
             <ul className="space-y-3">
+              <FooterLink to="/businesses/farm-fresh">Pra Farm Fresh</FooterLink>
               <FooterLink to="/businesses/construction">Construction</FooterLink>
               <FooterLink to="/businesses/logistics">Logistics & Fleet</FooterLink>
               <FooterLink to="/businesses/animal-nutrition">Animal Nutrition</FooterLink>
