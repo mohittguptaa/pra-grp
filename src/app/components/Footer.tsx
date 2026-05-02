@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import mainlogo from '../assets/mainlogo.png';
 
 export function Footer() {
   return (
@@ -7,12 +8,13 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
-            <div className="flex items-center space-x-3 mb-6">
+            {/* <div className="flex items-center space-x-3 mb-6">
               <div className="w-12 h-12 bg-gradient-to-br from-[#3b82f6] to-[#fb923c] rounded-xl flex items-center justify-center shadow-lg">
                 <span className="font-bold text-white text-xl">P</span>
               </div>
               <span className="text-2xl font-bold">PRA Group</span>
-            </div>
+            </div> */}
+            <img src={mainlogo} alt="PRA Group Logo" className='h-20' width="200" />            
             <p className="text-blue-200 mb-6">
               Diversified excellence across industries, building trust through quality and innovation.
             </p>
