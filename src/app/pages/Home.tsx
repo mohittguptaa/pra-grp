@@ -1,4 +1,5 @@
 // App.tsx
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router';
 import { motion } from 'motion/react';
 import { ArrowRight, Building2, Truck, ShoppingBag, Leaf, Box, TrendingUp, Users, Award, Apple, Droplets, Hammer, Package, Factory, Ship } from 'lucide-react';
@@ -18,6 +19,7 @@ import pnc from '../assets/pnc_infratech_ltd_logo.jpg';
 import godrej from '../assets/godrej.png';
 import lntecc from '../assets/lntcc_logo.png';
 import nhai from '../assets/nhai.jpg';
+import dhampur from '../assets/dhampur.png';
 
 // Client logos data - Update this object to change client logos and names
 // For real logos, replace the 'logo' URL with your actual image URLs
@@ -45,22 +47,64 @@ const clientsData = [
     name: 'NHAI',
     logo: nhai,
     alt: 'NHAI logo'
+  },
+  {
+    id: 5,
+    name: 'Dhampur Bio Organics Ltd',
+    logo: dhampur,
+    alt: 'Dhampur Bio Organics Ltd logo'
   }
 ];
 
-// Hero background image component
-function HeroBackground() {
+// Array of images for the hero slideshow - Add or replace images here
+// Each image will be displayed for 3 seconds with smooth crossfade
+const HERO_SLIDESHOW_IMAGES = [
+  Bgimg,           // Primary background image
+  LogisticsBg,     // Logistics background
+  ConstructionBg,  // Construction background
+  AlliedProductsBg, // Allied products background
+  AnimalNutritionBg // Animal nutrition background
+];
+
+// Hero slideshow background component with auto-cycling images
+function HeroSlideshowBackground() {
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+
+  // Auto-cycle images every 3 seconds
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % HERO_SLIDESHOW_IMAGES.length);
+    }, 3000); // 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="absolute inset-0 overflow-hidden">
+      {/* Images container with crossfade effect */}
+      <div className="absolute inset-0">
+        {HERO_SLIDESHOW_IMAGES.map((image, index) => (
+          <div
+            key={index}
+            className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+            style={{
+              opacity: index === currentIndex ? 1 : 0,
+              zIndex: index === currentIndex ? 5 : 0
+            }}
+          >
+            <img
+              src={image}
+              alt={`Slideshow background ${index + 1}`}
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              style={{ filter: 'brightness(0.7)' }}
+            />
+          </div>
+        ))}
+      </div>
+      
       {/* Base dark gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0A2540]/90 via-[#0f3460]/85 to-[#1a4d7a]/80 z-10"></div>
-      {/* Image layer */}
-      <img
-        src={Bgimg}
-        alt="PRA Group Products"
-        className="absolute inset-0 w-full h-full object-cover object-center"
-        style={{ filter: 'brightness(0.7)' }}
-      />
+      
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-20 z-20"></div>
     </div>
@@ -131,9 +175,9 @@ export function Home() {
 
   return (
     <div>
-      {/* Hero Section with Background Image */}
+      {/* Hero Section with Auto-changing Background Images */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-        <HeroBackground />
+        <HeroSlideshowBackground />
         
         <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
@@ -141,7 +185,7 @@ export function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 mt-6">
               We Believe in
               <br />
               <span className="bg-gradient-to-r from-[#fb923c] to-[#f97316] bg-clip-text text-transparent">

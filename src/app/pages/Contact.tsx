@@ -10,11 +10,57 @@ export function Contact() {
     business: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // REPLACE THIS URL WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
+  const GOOGLE_SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyqc00x2js8GV27QWqrg_vIfgX-dKh8wBuovlzPPCPJd-Q3hLGtX604HpRADvTLN9DzUQ/exec';
+
+  const submitToGoogleSheets = async (data: typeof formData) => {
+    try {
+      const response = await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors', // This prevents CORS errors but means you can't read the response
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      // With 'no-cors', response is opaque - we assume success if no network error
+      return { success: true };
+    } catch (error) {
+      console.error('Submission error:', error);
+      return { success: false, error: 'Network error. Please try again.' };
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({ name: '', email: '', phone: '', business: '', message: '' });
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const result = await submitToGoogleSheets(formData);
+      if (result.success) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Thank you! Your message has been sent successfully.',
+        });
+        // Reset form on success
+        setFormData({ name: '', email: '', phone: '', business: '', message: '' });
+        // Optional: clear success message after 5 seconds
+        setTimeout(() => setSubmitStatus(null), 5000);
+      } else {
+        throw new Error(result.error || 'Submission failed');
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Something went wrong. Please try again or contact us directly.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -23,6 +69,7 @@ export function Contact() {
 
   return (
     <div>
+      {/* Hero section remains same */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#0A2540] to-[#1a4d7a] dark:from-[#0A1929] dark:to-[#1a3a5c] text-white">
         <div className="max-w-7xl mx-auto text-center">
           <motion.div
@@ -41,6 +88,7 @@ export function Contact() {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Contact info sidebar - unchanged */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -63,9 +111,9 @@ export function Contact() {
                   <div>
                     <h3 className="font-semibold mb-1">Registered Office</h3>
                     <p className="text-muted-foreground">
-                      Bank Colony, Kashipur-244713<br />
-                      Udham Singh Nagar<br />
-                      Uttarakhand, India
+                      Registered Office: NH-24 <br/> 
+                      Rasoolpur-181, PO-Rajabpur <br/>
+                       Distt-Amroha-244226
                     </p>
                   </div>
                 </div>
@@ -93,8 +141,6 @@ export function Contact() {
                     <p className="text-muted-foreground">
                       +91-9004138197<br />
                       +91-9027757949<br />
-                      +91-90128 75675<br />
-                      +91-89585 69554
                     </p>
                   </div>
                 </div>
@@ -106,9 +152,7 @@ export function Contact() {
                   <div>
                     <h3 className="font-semibold mb-1">Email Addresses</h3>
                     <p className="text-muted-foreground">
-                      praenterprise2023@gmail.com<br />
-                      Prainfrastructure@gmail.com<br />
-                      Pratransportup@gmail.com
+                      ho.praservices@gmail.com
                     </p>
                   </div>
                 </div>
@@ -122,6 +166,7 @@ export function Contact() {
               </div>
             </motion.div>
 
+            {/* Form section with updated submit logic */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -132,12 +177,20 @@ export function Contact() {
               <div className="p-8 rounded-2xl bg-white dark:bg-card border border-border shadow-xl">
                 <h2 className="text-3xl font-bold mb-6">Send us a Message</h2>
 
+                {submitStatus && (
+                  <div className={`mb-6 p-4 rounded-xl ${
+                    submitStatus.type === 'success' 
+                      ? 'bg-green-50 text-green-800 border border-green-200' 
+                      : 'bg-red-50 text-red-800 border border-red-200'
+                  }`}>
+                    {submitStatus.message}
+                  </div>
+                )}
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block mb-2">
-                        Full Name
-                      </label>
+                      <label htmlFor="name" className="block mb-2">Full Name</label>
                       <input
                         type="text"
                         id="name"
@@ -147,13 +200,12 @@ export function Contact() {
                         required
                         className="w-full px-4 py-3 rounded-xl bg-muted border border-border focus:outline-none focus:ring-2 focus:ring-[#f97316] transition-all"
                         placeholder="John Doe"
+                        disabled={isSubmitting}
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="email" className="block mb-2">
-                        Email Address
-                      </label>
+                      <label htmlFor="email" className="block mb-2">Email Address</label>
                       <input
                         type="email"
                         id="email"
@@ -163,15 +215,14 @@ export function Contact() {
                         required
                         className="w-full px-4 py-3 rounded-xl bg-muted border border-border focus:outline-none focus:ring-2 focus:ring-[#f97316] transition-all"
                         placeholder="john@example.com"
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="phone" className="block mb-2">
-                        Phone Number
-                      </label>
+                      <label htmlFor="phone" className="block mb-2">Phone Number</label>
                       <input
                         type="tel"
                         id="phone"
@@ -181,13 +232,12 @@ export function Contact() {
                         required
                         className="w-full px-4 py-3 rounded-xl bg-muted border border-border focus:outline-none focus:ring-2 focus:ring-[#f97316] transition-all"
                         placeholder="+91 1234567890"
+                        disabled={isSubmitting}
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="business" className="block mb-2">
-                        Business Vertical
-                      </label>
+                      <label htmlFor="business" className="block mb-2">Business Vertical</label>
                       <select
                         id="business"
                         name="business"
@@ -195,8 +245,10 @@ export function Contact() {
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-3 rounded-xl bg-muted border border-border focus:outline-none focus:ring-2 focus:ring-[#f97316] transition-all"
+                        disabled={isSubmitting}
                       >
                         <option value="">Select a vertical</option>
+                        <option value="Pra-Farm-Fresh">Pra Farm Fresh</option>
                         <option value="construction">Construction</option>
                         <option value="logistics">Logistics & Fleet</option>
                         <option value="animal-nutrition">Animal Nutrition</option>
@@ -207,9 +259,7 @@ export function Contact() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block mb-2">
-                      Message
-                    </label>
+                    <label htmlFor="message" className="block mb-2">Message</label>
                     <textarea
                       id="message"
                       name="message"
@@ -219,15 +269,23 @@ export function Contact() {
                       rows={6}
                       className="w-full px-4 py-3 rounded-xl bg-muted border border-border focus:outline-none focus:ring-2 focus:ring-[#f97316] transition-all resize-none"
                       placeholder="Tell us about your requirements..."
+                      disabled={isSubmitting}
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#f97316] to-[#fb923c] text-white rounded-xl font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#f97316] to-[#fb923c] text-white rounded-xl font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send Message
-                    <Send className="w-5 h-5" />
+                    {isSubmitting ? (
+                      <>Sending...</>
+                    ) : (
+                      <>
+                        Send Message
+                        <Send className="w-5 h-5" />
+                      </>
+                    )}
                   </button>
                 </form>
               </div>
@@ -236,6 +294,7 @@ export function Contact() {
         </div>
       </section>
 
+      {/* Map section - unchanged */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted">
         <div className="max-w-7xl mx-auto">
           <div className="rounded-2xl overflow-hidden h-96 bg-white dark:bg-card border border-border">

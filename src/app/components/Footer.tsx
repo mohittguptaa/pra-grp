@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
-import mainlogo from '../assets/mainlogo.png';
+import mainlogo from '../assets/mainlogowhite.png';
 
 export function Footer() {
   return (
@@ -57,11 +57,11 @@ export function Footer() {
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 flex-shrink-0 text-[#fb923c]" />
-                <span className="text-blue-200">+91-9004138197</span>
+                <span className="text-blue-200">+91-9004138197 , +91-9027757949</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 flex-shrink-0 text-[#fb923c]" />
-                <span className="text-blue-200">praenterprise2023@gmail.com</span>
+                <span className="text-blue-200">ho.praservices@gmail.com</span>
               </li>
             </ul>
           </div>

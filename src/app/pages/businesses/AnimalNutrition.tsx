@@ -1,6 +1,9 @@
 import { motion } from 'motion/react';
 import { Leaf, CheckCircle, ArrowRight, Award, BarChart, Wheat } from 'lucide-react';
 import { Link } from 'react-router';
+import Animalimg from '../../assets/AnimalNutritionBg.jpg'
+import rice from '../../assets/rice-ddgs-product.png';
+import maize from '../../assets/maize-ddgs-product.webp';
 
 export function AnimalNutrition() {
   const products = [
@@ -59,11 +62,12 @@ export function AnimalNutrition() {
               </Link>
             </div>
             <div className="relative">
-              <div className="aspect-video rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 overflow-hidden">
+              {/* <div className="aspect-video rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 overflow-hidden">
                 <div className="w-full h-full bg-gradient-to-br from-teal-500/20 to-cyan-700/20 flex items-center justify-center">
                   <Leaf className="w-32 h-32 text-white/30" />
                 </div>
-              </div>
+              </div> */}
+              <img src={Animalimg} alt="Animal Nutrition" className="rounded-2xl shadow-lg h-full w-full" />
             </div>
           </motion.div>
         </div>
@@ -96,9 +100,7 @@ export function AnimalNutrition() {
               >
                 <div className={`order-${index % 2 === 0 ? '1' : '2'}`}>
                   <div className="sticky top-24">
-                    <div className="aspect-square rounded-2xl bg-gradient-to-br from-teal-100 to-cyan-100 dark:from-teal-900/30 dark:to-cyan-800/30 border border-teal-200 dark:border-teal-800 flex items-center justify-center">
-                      <Wheat className="w-32 h-32 text-teal-600" />
-                    </div>
+                    <img src={index % 2 === 0 ? rice : maize} alt={product.name} className="rounded-2xl " />
                   </div>
                 </div>
                 <div className={`order-${index % 2 === 0 ? '2' : '1'}`}>

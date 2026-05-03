@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Truck, CheckCircle, ArrowRight, MapPin, Clock, Shield, Navigation } from 'lucide-react';
 import { Link } from 'react-router';
+import logistics from '../../assets/logistics_services.webp';
 
 export function Logistics() {
   const features = [
@@ -39,11 +40,12 @@ export function Logistics() {
               </Link>
             </div>
             <div className="relative">
-              <div className="aspect-video rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 overflow-hidden">
+              {/* <div className="aspect-video rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 overflow-hidden">
                 <div className="w-full h-full bg-gradient-to-br from-green-500/20 to-emerald-700/20 flex items-center justify-center">
                   <Truck className="w-32 h-32 text-white/30" />
                 </div>
-              </div>
+              </div> */}
+              <img src={logistics} alt="Logistics Service" className="rounded-2xl shadow-lg h-full w-full" />
             </div>
           </motion.div>
         </div>
@@ -136,7 +138,7 @@ export function Logistics() {
               Partner with us for reliable fleet services tailored to your transportation needs
             </p>
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Contact: Pratransportup@gmail.com | +91-90128 75675
+              Contact: ho.praservices@gmail.com | +91-90128 75675
             </p>
             <Link
               to="/contact"

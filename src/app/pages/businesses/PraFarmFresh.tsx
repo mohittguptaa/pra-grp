@@ -5,6 +5,7 @@ import {
   Factory, Truck, ShieldCheck 
 } from 'lucide-react';
 import { Link } from 'react-router';
+import farmfresh from '../../assets/BgImage.jpeg';
 
 export function FarmFresh() {
   const products = [
@@ -77,7 +78,7 @@ export function FarmFresh() {
               </Link>
             </div>
             <div className="relative">
-              <div className="aspect-video rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 overflow-hidden">
+              {/* <div className="aspect-video rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 overflow-hidden">
                 <div className="w-full h-full bg-gradient-to-br from-green-500/20 to-emerald-700/20 flex items-center justify-center gap-4 flex-wrap p-6">
                   <div className="bg-white/10 p-4 rounded-2xl backdrop-blur-sm text-center">
                     <CookingPot className="w-12 h-12 mx-auto mb-2" />
@@ -92,7 +93,8 @@ export function FarmFresh() {
                     <p className="text-sm font-medium">Vermicelli</p>
                   </div>
                 </div>
-              </div>
+              </div> */}
+              <img src={farmfresh} alt="PRA Farm Fresh" className="rounded-2xl shadow-lg h-full w-full" />
             </div>
           </motion.div>
         </div>

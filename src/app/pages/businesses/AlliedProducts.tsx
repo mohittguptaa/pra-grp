@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Box, CheckCircle, ArrowRight, Beaker, Pill, Package, Globe } from 'lucide-react';
 import { Link } from 'react-router';
+import AlliedProductsservecies from '../../assets/AlliedProductsservecies.jpeg';
 
 export function AlliedProducts() {
   const products = [
@@ -74,11 +75,12 @@ export function AlliedProducts() {
               </Link>
             </div>
             <div className="relative">
-              <div className="aspect-video rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 overflow-hidden">
+              {/* <div className="aspect-video rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 overflow-hidden">
                 <div className="w-full h-full bg-gradient-to-br from-purple-500/20 to-pink-700/20 flex items-center justify-center">
                   <Box className="w-32 h-32 text-white/30" />
                 </div>
-              </div>
+              </div> */}
+              <img src={AlliedProductsservecies} alt="Allied Products" className="rounded-2xl " />
             </div>
           </motion.div>
         </div>

@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Building2, CheckCircle, ArrowRight, Hammer, Zap, Trees, Wrench } from 'lucide-react';
 import { Link } from 'react-router';
+import construction from '../../assets/construction_service.jpg';
 
 export function Construction() {
   const services = [
@@ -41,11 +42,12 @@ export function Construction() {
               </Link>
             </div>
             <div className="relative">
-              <div className="aspect-video rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 overflow-hidden">
+              {/* <div className="aspect-video rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 overflow-hidden">
                 <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-blue-700/20 flex items-center justify-center">
                   <Building2 className="w-32 h-32 text-white/30" />
                 </div>
-              </div>
+              </div> */}
+              <img src={construction} alt="Construction Service" className="rounded-2xl shadow-lg h-full w-full" />
             </div>
           </motion.div>
         </div>

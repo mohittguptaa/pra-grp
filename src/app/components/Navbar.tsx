@@ -93,6 +93,7 @@ export function Navbar() {
             <NavLink to="/projects">Projects</NavLink>
             <NavLink to="/about">About</NavLink>
             <NavLink to="/certificates">Certificates</NavLink>
+            <NavLink to="/careers">Careers</NavLink>
             <NavLink to="/contact">Contact</NavLink>
 
             <Link
@@ -144,6 +145,7 @@ export function Navbar() {
               <MobileNavLink to="/projects">Projects</MobileNavLink>
               <MobileNavLink to="/about">About</MobileNavLink>
               <MobileNavLink to="/certificates">Certificates</MobileNavLink>
+              <MobileNavLink to="/careers">Careers</MobileNavLink>
               <MobileNavLink to="/contact">Contact</MobileNavLink>
               <Link
                 to="/contact"

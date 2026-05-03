@@ -3,7 +3,7 @@ import { Target, Eye, Award, Users, TrendingUp, Heart } from 'lucide-react';
 
 export function About() {
   const timeline = [
-    { year: 'Founded', event: 'PRA Group Established', description: 'Started operations in Kashipur, Uttarakhand' },
+    { year: 'Founded', event: ' Diwakar Singh', description: 'Started operations in Amroha, Uttrapradesh , then further extented in Kashipur, Uttrajkhand' },
     { year: 'Growth', event: 'Construction Services', description: 'Expanded to civil & electrical work for industrial projects' },
     { year: 'Expansion', event: 'Logistics Operations', description: 'Launched fleet provider services across India' },
     { year: 'Diversification', event: 'Animal Nutrition', description: 'Introduced DDGS products for livestock feed' },
