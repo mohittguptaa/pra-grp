@@ -296,21 +296,25 @@ export function Contact() {
 
       {/* Map section - unchanged */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted">
-        <div className="max-w-7xl mx-auto">
-          <div className="rounded-2xl overflow-hidden h-96 bg-white dark:bg-card border border-border">
-            <div className="w-full h-full bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/20 dark:to-blue-800/20 flex items-center justify-center">
-              <div className="text-center p-8">
-                <MapPin className="w-16 h-16 text-[#0A2540] dark:text-[#3b82f6] mx-auto mb-4" />
-                <p className="text-lg font-semibold mb-2">Our Location</p>
-                <p className="text-muted-foreground">
-                  Kashipur, Udham Singh Nagar<br />
-                  Uttarakhand, India - 244713
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+  <div className="max-w-7xl mx-auto">
+    <div className="rounded-2xl overflow-hidden h-96 bg-white dark:bg-card border border-border relative">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3482.668043516113!2d78.9565819!3d29.203898599999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390a43001db0dd97%3A0xd6f2808623e72021!2sKashipur%20Bank%20colony!5e0!3m2!1sen!2sin!4v1777820508589!5m2!1sen!2sin" 
+       width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        title="Office Location Map"
+        className="w-full h-full"></iframe>
+      {/* Optional: overlay a small info card on the map for better UX */}
+      <div className="absolute bottom-4 left-4 bg-white/90 dark:bg-black/80 backdrop-blur-sm p-3 rounded-lg shadow-lg pointer-events-none">
+        <p className="text-sm font-semibold">📌 Our Corporate Office</p>
+        <p className="text-xs text-muted-foreground">Kashipur, Uttarakhand - 244713</p>
+      </div>
+    </div>
+  </div>
+</section>
     </div>
   );
 }
