@@ -6,14 +6,14 @@ import { ArrowRight, Building2, Truck, ShoppingBag, Leaf, Box, TrendingUp, Users
 import { BusinessCard } from '../components/BusinessCard';
 import { StatCard } from '../components/StatCard';
 import Bgimg from '../assets/BgImage.jpeg';
-import LogisticsBg from '../assets/logistics.png';
+import LogisticsBg from '../assets/logistics_services.webp';
 
 // Import card background images
 // Add your actual image paths here
 import FarmFreshBg from '../assets/logistics.png';
 // import LogisticsBg from '../assets/cards/logistics-bg.jpg';
-import ConstructionBg from '../assets/ConstructionBg.jpg';
-import AlliedProductsBg from '../assets/AlliedProductsBg.jpg';
+import ConstructionBg from '../assets/construction_service.jpg';
+import AlliedProductsBg from '../assets/AlliedProductsservecies.jpeg';
 import AnimalNutritionBg from '../assets/AnimalNutritionBg.jpg';
 import pnc from '../assets/pnc_infratech_ltd_logo.jpg';
 import godrej from '../assets/godrej.png';
@@ -95,7 +95,7 @@ function HeroSlideshowBackground() {
             <img
               src={image}
               alt={`Slideshow background ${index + 1}`}
-              className="absolute inset-0 w-full h-full object-cover object-center"
+              className="absolute  w-full h-full object-cover object-center"
               style={{ filter: 'brightness(0.7)' }}
             />
           </div>
@@ -103,7 +103,7 @@ function HeroSlideshowBackground() {
       </div>
       
       {/* Base dark gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0A2540]/90 via-[#0f3460]/85 to-[#1a4d7a]/80 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-[#0f3460]/85 to-[#1a4d7a]/80 z-10"></div>
       
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-20 z-20"></div>

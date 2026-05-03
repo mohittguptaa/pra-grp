@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
-import mainlogo from '../assets/mainlogowhite.png';
+import mainlogo from '../assets/mainlogowhite2.png';
 
 export function Footer() {
   return (
@@ -14,7 +14,7 @@ export function Footer() {
               </div>
               <span className="text-2xl font-bold">PRA Group</span>
             </div> */}
-            <img src={mainlogo} alt="PRA Group Logo" className='h-20' width="200" />            
+            <img src={mainlogo} alt="PRA Group Logo" className='h-28' width="200" />            
             <p className="text-blue-200 mb-6">
               Diversified excellence across industries, building trust through quality and innovation.
             </p>

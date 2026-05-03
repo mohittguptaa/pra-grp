@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import mainlogo from '../assets/mainlogo.png';
+import mainlogo from '../assets/mainlogo2.png';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,7 +48,7 @@ export function Navbar() {
             <span className="text-2xl font-bold bg-gradient-to-r from-[#0A2540] to-[#3b82f6] dark:from-[#3b82f6] dark:to-[#fb923c] bg-clip-text text-transparent">
               PRA Group
             </span> */}
-            <img src={mainlogo} alt="PRA Group Logo" className='h-20' w-40 />
+            <img src={mainlogo} alt="PRA Group Logo" className='h-26 w-46' />
           </Link>
 
           <div className="hidden lg:flex items-center space-x-1">
