@@ -2,10 +2,11 @@ import { motion } from 'motion/react';
 import { Award, CheckCircle, Shield, FileCheck, X, ZoomIn } from 'lucide-react';
 import { useState } from 'react';
 import udyog from "../assets/UdyamCert.png"
-import fassai from "../assets/FSSAI-LICENSE.png"
+import fassai from "../assets/PRA Enterprises FSSAI New Certificate_page-0001.jpg"
 import cert3 from "../assets/Cert3.png"
 import cert4 from "../assets/Cert4.png"
 import cert5 from "../assets/Cert5.png"
+import cert6 from "../assets/PRA - IEC CertificateOfIEC-1_page-0001.jpg"
 
 export function Certificates() {
   const [selectedImage, setSelectedImage] = useState<{
@@ -44,6 +45,12 @@ export function Certificates() {
       thumbnail: cert5,
       full: cert5,
       title: ""
+    },
+    {
+      id: 6,
+      thumbnail: cert6,
+      full: cert6,
+      title: "IEC Certificate"
     },
   ];
 

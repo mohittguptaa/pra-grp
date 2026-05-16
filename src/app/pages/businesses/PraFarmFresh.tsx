@@ -18,7 +18,7 @@ export function FarmFresh() {
     },
     { 
       icon: <UtensilsCrossed className="w-6 h-6" />, 
-      title: 'Pasta (Penne)', 
+      title: 'Penne Pasta', 
       desc: 'Authentic Italian-style penne pasta with ridges that hold sauces perfectly. Al dente every time.',
       badge: 'Italian Quality',
       features: ['Smooth finish', 'Quick cooking']
@@ -27,7 +27,7 @@ export function FarmFresh() {
       icon: <Wheat className="w-6 h-6" />, 
       title: 'Classic Vermicelli', 
       desc: 'Traditional fine roasted vermicelli. Ideal for sweet kheer, savory upma, and fusion dishes.',
-      badge: 'Farm Fresh',
+      badge: 'PRA Farm Fresh',
       features: ['Roasted', 'Versatile use']
     },
     { 
@@ -112,7 +112,7 @@ export function FarmFresh() {
             >
               <h2 className="text-4xl font-bold mb-6">Bringing Farm Fresh Goodness to Your Table</h2>
               <p className="text-lg text-muted-foreground mb-6">
-                At PRA Fresh Farm, we combine traditional pasta-making artistry with modern hygiene standards. Our products are crafted from premium durum wheat, sourced directly from trusted local farms.
+                At PRA Fresh Farm, we combine traditional pasta-making artistry with modern hygiene standards. Our products are crafted from premium Hard Wheat, sourced directly from trusted local farms.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
                 From our classic elbow macaroni to nutrient-rich whole wheat vermicelli, every bite delivers authentic Italian taste with the goodness of farm-fresh ingredients. No preservatives, no artificial colors — just pure pasta perfection.
